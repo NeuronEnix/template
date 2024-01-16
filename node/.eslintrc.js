@@ -11,5 +11,7 @@ module.exports = {
     project: './tsconfig.json'
   },
   rules: {
+    "no-console": "off",
+    "@typescript-eslint/naming-convention": "off"
   },
 };
