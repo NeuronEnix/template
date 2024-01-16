@@ -5,10 +5,10 @@ import userDao from '../../../db/user/dao';
 
 export default async function execute(data: T_InData): Promise<T_OutData> {
   const user = await userDao.findOne({
-    select: ['id', 'password'],
+    select: ['id', 'pass'],
     where: { email: data.email, status: 1 },
   });
-  const isPassOk = await comparePass(data.password, user?.password ?? '');
+  const isPassOk = await comparePass(data.pass, user?.pass ?? '');
   if (!isPassOk) throw 'not ok';
   return { userId: user?.id ?? 0, accessToken: 'acc', refreshToken: 'ref' };
 }

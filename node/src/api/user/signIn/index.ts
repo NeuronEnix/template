@@ -8,7 +8,7 @@ const ajv = new Ajv({ allErrors: true });
 
 export type T_InData = {
   email: string,
-  password: string
+  pass: string
 };
 
 export type T_OutData = {
@@ -21,9 +21,9 @@ const ajvValidator = ajv.compile({
   type: 'object',
   properties: {
     email: UserSchema.email,
-    password: UserSchema.password,
+    pass: UserSchema.pass,
   },
-  required: ['email', 'password'],
+  required: ['email', 'pass'],
   additionalProperties: false,
 });
 
