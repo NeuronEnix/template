@@ -1,6 +1,6 @@
 import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes } from 'sequelize';
 
-import { CommonSchema } from './types';
+import { CommonSchema } from './config/types';
 import sequelize from './config/sequelizeCon';
 
 export default class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
