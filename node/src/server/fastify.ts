@@ -1,5 +1,6 @@
 import Fastify from 'fastify';
-import { router } from '../router';
+import config from '../config';
+import router from '../router';
 
 function getPath(url: string): string {
   const queryParamPos = url.indexOf('?');
@@ -24,12 +25,11 @@ fastify.all('*', async (req, res) => {
     query: req.query as { key: '' },
   });
 
-  req.headers.cookie;
   res.type('application/json').code(data.httpCode);
   return data.body;
 });
 
-fastify.listen({ port: 3000 }, (err, address) => {
+fastify.listen({ port: config.server.port }, (err, address) => {
   if (err) throw err;
   console.log(`Fastify server: ${address}`);
 });

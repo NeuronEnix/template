@@ -1,25 +1,23 @@
 import Ajv from 'ajv';
 import { T_Request } from '../../../types';
-import { UserSchema } from '../../../db/user';
 
 const ajv = new Ajv({ allErrors: true });
 
 export type T_InData = {
-  email: string,
-  pass: string
+  userId: number
 };
 
 export type T_OutData = {
-  userId: number
+  userId: number,
+  name: string
 };
 
 const ajvValidator = ajv.compile({
   type: 'object',
   properties: {
-    email: UserSchema.email,
-    pass: UserSchema.pass,
+    userId: { type: 'integer', minimum: 1, maximum: 2 },
   },
-  required: ['email', 'pass'],
+  required: ['userId'],
   additionalProperties: false,
 });
 

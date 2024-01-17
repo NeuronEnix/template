@@ -1,7 +1,7 @@
 import { T_Request, T_Response } from './types';
 import * as api from './api/index';
 
-export async function router(req: T_Request): Promise<T_Response> {
+export default async function router(req: T_Request): Promise<T_Response> {
   try {
     const res: T_Response = {
       httpCode: 200,

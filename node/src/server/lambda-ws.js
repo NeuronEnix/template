@@ -1,6 +1,6 @@
 // src/server/websocket.handler.js
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
   console.log('WebSocket event: ', event);
 
   // Your WebSocket logic goes here

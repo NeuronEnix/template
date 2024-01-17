@@ -1,4 +1,6 @@
-import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes } from 'sequelize';
+import {
+  Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes,
+} from 'sequelize';
 
 import { CommonSchema } from './config/types';
 import sequelize from './config/sequelizeCon';
@@ -12,21 +14,27 @@ export const UserSchema = {
 
 export default class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare id: CreationOptional<number>;
+
   declare email: string;
+
   declare name: string;
+
   declare pass: string;
+
   declare status: CreationOptional<number>;
 }
 
 User.init(
   {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, },
-    email: { type: DataTypes.STRING, allowNull: false, },
-    name: { type: DataTypes.STRING, allowNull: false, },
-    pass: { type: DataTypes.STRING, allowNull: false, },
-    status: { type: DataTypes.TINYINT, allowNull: false, defaultValue: 1}
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    email: { type: DataTypes.STRING, allowNull: false },
+    name: { type: DataTypes.STRING, allowNull: false },
+    pass: { type: DataTypes.STRING, allowNull: false },
+    status: { type: DataTypes.TINYINT, allowNull: false, defaultValue: 1 },
   },
-  { sequelize, modelName: 'user', freezeTableName: true, paranoid: true, timestamps: true }
+  {
+    sequelize, modelName: 'user', freezeTableName: true, paranoid: true, timestamps: true,
+  },
 );
 
-User.sync({alter:true})
+User.sync({ alter: true });

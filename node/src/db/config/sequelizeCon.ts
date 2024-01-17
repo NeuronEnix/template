@@ -1,12 +1,13 @@
 import { Sequelize } from 'sequelize';
+import config from '../../config';
 
-// const sequelize = new Sequelize('mysql://root:pass123@localhost:3306/homewatch');
 const sequelize = new Sequelize({
-  host: "localhost",
-  username: "root",
-  password: "pass123",
-  database: "homewatch",
-  dialect: "mysql"
+  host: config.db.host,
+  port: config.db.port,
+  username: config.db.user,
+  password: config.db.pass,
+  database: config.db.name,
+  dialect: 'mysql',
 });
 
-export default sequelize
+export default sequelize;

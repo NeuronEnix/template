@@ -10,7 +10,9 @@ export type T_InData = {
 };
 
 export type T_OutData = {
-  userId: number
+  userId: number,
+  accessToken: string,
+  refreshToken: string,
 };
 
 const ajvValidator = ajv.compile({

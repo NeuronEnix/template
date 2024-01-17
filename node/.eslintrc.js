@@ -12,6 +12,7 @@ module.exports = {
   },
   rules: {
     "no-console": "off",
-    "@typescript-eslint/naming-convention": "off"
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-throw-literal": "off"
   },
 };
