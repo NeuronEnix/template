@@ -10,7 +10,5 @@ export default async function execute(data: T_InData): Promise<T_OutData> {
     pass: data.pass,
     name: "name",
   })
-  console.log(user);
-
   return { userId: user.id ?? 0 };
 }

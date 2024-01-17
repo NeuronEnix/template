@@ -1,5 +1,5 @@
 import Fastify from 'fastify';
-import { handler } from '../index';
+import { router } from '../router';
 
 function getPath(url: string): string {
   const queryParamPos = url.indexOf('?');
@@ -12,7 +12,7 @@ const allowedMethod = ['GET', 'POST'];
 
 fastify.all('*', async (req, res) => {
   if (!allowedMethod.includes(req.method)) return res.send(404);
-  const data = await handler({
+  const data = await router({
     path: getPath(req.url),
     method: req.method as 'GET' | 'POST',
     source: {
@@ -31,6 +31,5 @@ fastify.all('*', async (req, res) => {
 
 fastify.listen({ port: 3000 }, (err, address) => {
   if (err) throw err;
-  console.log(`Fastify server: http://${address}:${3000}`);
-  // Server is now listening on ${address}
+  console.log(`Fastify server: ${address}`);
 });

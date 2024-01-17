@@ -2,7 +2,7 @@ import Ajv from 'ajv';
 
 import { T_Request } from '../../../types';
 import execute from './execute';
-import { UserSchema } from '../../../db/user/types';
+import { UserSchema } from '../../../db/user';
 
 const ajv = new Ajv({ allErrors: true });
 
