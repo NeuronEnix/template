@@ -1,5 +1,5 @@
 import Fastify from 'fastify';
-import CONFIG from '../config';
+import CONFIG from '../common/config';
 import router from '../router';
 
 function getPath(url: string): string {

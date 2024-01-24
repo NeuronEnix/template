@@ -4,7 +4,7 @@ import {
 
 import { CommonSchema } from './config/types';
 import sequelize from './config/sequelizeCon';
-import { STATUS } from "../const"
+import { STATUS } from "../common/const"
 
 export const UserSchema = {
   ...CommonSchema,

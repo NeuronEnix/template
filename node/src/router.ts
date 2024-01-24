@@ -1,4 +1,5 @@
 import { T_Request, T_Response } from './types';
+import { ResponseError } from "./common/error"
 import * as api from './api/index';
 
 export default async function router(req: T_Request): Promise<T_Response> {
@@ -23,14 +24,22 @@ export default async function router(req: T_Request): Promise<T_Response> {
     }
     return res;
   } catch (err) {
-    console.log(err);
-    return {
-      httpCode: 400,
+
+    const e: T_Response = {
+      httpCode: 500,
       body: {
         code: 'ERR',
         msg: 'ERR',
         data: {},
       },
-    };
+    }
+    console.log(err);
+    if (err instanceof ResponseError) {
+      e.httpCode = 400;
+      e.body.code = err.code;
+      e.body.msg = err.msg;
+      e.body.data = err.data;
+    }
+    return e;
   }
 }

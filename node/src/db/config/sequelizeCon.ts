@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import CONFIG from '../../config';
+import CONFIG from '../../common/config';
 
 const sequelize = new Sequelize({
   host: CONFIG.DB.HOST,
