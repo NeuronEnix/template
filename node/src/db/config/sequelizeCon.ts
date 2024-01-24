@@ -1,12 +1,12 @@
 import { Sequelize } from 'sequelize';
-import config from '../../config';
+import CONFIG from '../../config';
 
 const sequelize = new Sequelize({
-  host: config.db.host,
-  port: config.db.port,
-  username: config.db.user,
-  password: config.db.pass,
-  database: config.db.name,
+  host: CONFIG.DB.HOST,
+  port: CONFIG.DB.PORT,
+  username: CONFIG.DB.USER,
+  password: CONFIG.DB.PASS,
+  database: CONFIG.DB.NAME,
   dialect: 'mysql',
 });
 

@@ -1,5 +1,5 @@
 import Fastify from 'fastify';
-import config from '../config';
+import CONFIG from '../config';
 import router from '../router';
 
 function getPath(url: string): string {
@@ -29,7 +29,7 @@ fastify.all('*', async (req, res) => {
   return data.body;
 });
 
-fastify.listen({ port: config.server.port }, (err, address) => {
+fastify.listen({ port: CONFIG.SERVER.PORT }, (err, address) => {
   if (err) throw err;
   console.log(`Fastify server: ${address}`);
 });
