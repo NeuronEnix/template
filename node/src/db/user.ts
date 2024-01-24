@@ -4,6 +4,7 @@ import {
 
 import { CommonSchema } from './config/types';
 import sequelize from './config/sequelizeCon';
+import { STATUS } from "../const"
 
 export const UserSchema = {
   ...CommonSchema,
@@ -30,7 +31,7 @@ User.init(
     email: { type: DataTypes.STRING, allowNull: false },
     name: { type: DataTypes.STRING, allowNull: false },
     pass: { type: DataTypes.STRING, allowNull: false },
-    status: { type: DataTypes.TINYINT, allowNull: false, defaultValue: 1 },
+    status: { type: DataTypes.TINYINT, allowNull: false, defaultValue: STATUS.ACTIVE },
   },
   {
     sequelize, modelName: 'user', freezeTableName: true, paranoid: true, timestamps: true,
