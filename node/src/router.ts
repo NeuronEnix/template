@@ -1,5 +1,5 @@
 import { T_Request, T_Response } from './types';
-import { ResponseError } from "./common/error"
+import { ResponseError } from './common/error';
 import * as api from './api/index';
 
 export default async function router(req: T_Request): Promise<T_Response> {
@@ -14,9 +14,12 @@ export default async function router(req: T_Request): Promise<T_Response> {
     };
 
     console.log(req);
+    const reqPath = `${req.method} ${req.path}`;
 
-    switch (`${req.method} ${req.path}`) {
+    switch (reqPath) {
       case 'POST /user/signUp': res.body.data = await api.userAPI.signUp(req); break;
+      case 'POST /auth/google': res.body.data = await api.authAPI.google(req); break;
+      case 'GET /auth/google': res.body.data = await api.authAPI.google(req); break;
       // case 'POST /user/signIn': res.body.data = await api.userAPI.signIn(req); break;
       // case 'GET /user/detail': res.body.data = await api.userAPI.detail(req); break;
 
@@ -24,18 +27,19 @@ export default async function router(req: T_Request): Promise<T_Response> {
     }
     return res;
   } catch (err) {
+    console.log(err);
 
     const e: T_Response = {
       httpCode: 500,
       body: {
-        code: 'ERR',
-        msg: 'ERR',
+        code: 'UnknownError',
+        msg: 'Something went wrong',
         data: {},
       },
-    }
-    console.log(err);
+    };
+
     if (err instanceof ResponseError) {
-      e.httpCode = 400;
+      if (err.code !== 'UnknownError') e.httpCode = 400;
       e.body.code = err.code;
       e.body.msg = err.msg;
       e.body.data = err.data;
