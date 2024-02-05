@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In / Sign Up</title>
+  <script>
+    function gLogin() {
+      const form = document.createElement('form');
+      form.method = 'get';
+      form.action = 'https://accounts.google.com/o/oauth2/v2/auth';
+
+      const params = {
+        'client_id': '50853235464-3ud4sjj3qu0knodbpdl0d3h7vfqamtb0.apps.googleusercontent.com',
+        'redirect_uri': 'http://localhost:3000/auth/google',
+        'response_type': 'code',
+        'scope': 'profile email'
+      };
+
+      for (let key in params) {
+        let input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = params[key];
+        form.appendChild(input);
+      }
+
+      let submitInput = document.createElement('input');
+      submitInput.type = 'submit';
+      submitInput.value = 'I Agree';
+      form.appendChild(submitInput);
+
+      document.body.appendChild(form);
+    };
+  </script>
+</head>
+<body>
+  <h2>Sign In / Sign Up</h2>
+
+  <form action="/signin" method="post">
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+      <input type="submit" value="Sign In / Sign Up">
+    </div>
+  </form>
+
+  <div>
+    <p>Or</p>
+    <!-- <a href="/auth/google"> -->
+      <button onclick="gLogin()">Login with Google</button>
+    <!-- </a> -->
+  </div>
+</body>
+</html>

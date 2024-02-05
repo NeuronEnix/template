@@ -4,7 +4,7 @@ import {
 
 import { CommonSchema } from './config/types';
 import sequelize from './config/sequelizeCon';
-import { STATUS } from "../common/const"
+import { STATUS, IDP_TYPE } from '../common/const';
 
 export const UserSchema = {
   ...CommonSchema,
@@ -20,7 +20,13 @@ export default class User extends Model<InferAttributes<User>, InferCreationAttr
 
   declare name: string;
 
-  declare pass: string;
+  declare pass: CreationOptional<string>;
+
+  declare googleVerified: CreationOptional<boolean>;
+
+  declare accTokJti: CreationOptional<{ jti: string, refJti: string, iat: Date }[]>;
+
+  declare refTokJti: { jti: string, idp: IDP_TYPE, iat: Date }[];
 
   declare status: CreationOptional<number>;
 }
@@ -30,11 +36,21 @@ User.init(
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     email: { type: DataTypes.STRING, allowNull: false },
     name: { type: DataTypes.STRING, allowNull: false },
-    pass: { type: DataTypes.STRING, allowNull: false },
+    pass: { type: DataTypes.STRING, allowNull: true },
+
+    googleVerified: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+    accTokJti: { type: DataTypes.JSON, allowNull: true },
+    refTokJti: { type: DataTypes.JSON, allowNull: true },
     status: { type: DataTypes.TINYINT, allowNull: false, defaultValue: STATUS.ACTIVE },
   },
   {
-    sequelize, modelName: 'user', freezeTableName: true, paranoid: true, timestamps: true,
+    sequelize,
+    modelName: 'user',
+    freezeTableName: true,
+    timestamps: true,
+    indexes: [
+      { unique: true, fields: ['email'] },
+    ],
   },
 );
 
