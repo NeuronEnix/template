@@ -9,6 +9,13 @@ const CONFIG = {
     PASS: process.env.DB_PASS ?? 'pass123',
     NAME: process.env.DB_NAME ?? 'template',
   },
+  IDP: {
+    GOOGLE: {
+      CLIENT_ID: process.env.GOOGLE_OAUTH_CLIENT_ID || '',
+      CLIENT_SECRET: process.env.GOOGLE_OAUTH_CLIENT_SECRET || '',
+      CALLBACK_URL: process.env.GOOGLE_OAUTH_CALLBACK_URL || 'http://localhost:3000/auth/google/callback',
+    },
+  },
 };
 
 export default CONFIG;
