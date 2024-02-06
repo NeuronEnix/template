@@ -32,14 +32,14 @@ export default async function router(req: T_Request): Promise<T_Response> {
     const e: T_Response = {
       httpCode: 500,
       body: {
-        code: 'UnknownError',
+        code: 'UNKNOWN_ERROR',
         msg: 'Something went wrong',
         data: {},
       },
     };
 
     if (err instanceof ResponseError) {
-      if (err.code !== 'UnknownError') e.httpCode = 400;
+      if (err.code !== 'UNKNOWN_ERROR') e.httpCode = 400;
       e.body.code = err.code;
       e.body.msg = err.msg;
       e.body.data = err.data;
