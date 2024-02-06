@@ -8,6 +8,7 @@ const sequelize = new Sequelize({
   password: CONFIG.DB.PASS,
   database: CONFIG.DB.NAME,
   dialect: 'mysql',
+  logging: false,
 });
 
 export default sequelize;
