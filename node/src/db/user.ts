@@ -24,9 +24,9 @@ export default class User extends Model<InferAttributes<User>, InferCreationAttr
 
   declare googleVerified: CreationOptional<boolean>;
 
-  declare accTokJti: CreationOptional<{ jti: string, refJti: string, iat: Date }[]>;
+  declare accTok: CreationOptional<{ jti: string, refJti: string, iat: Date }[]>;
 
-  declare refTokJti: { jti: string, idp: IDP_TYPE, iat: Date }[];
+  declare refTok: { jti: string, idp: IDP_TYPE, iat: Date }[];
 
   declare status: CreationOptional<number>;
 }
@@ -39,8 +39,9 @@ User.init(
     pass: { type: DataTypes.STRING, allowNull: true },
 
     googleVerified: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
-    accTokJti: { type: DataTypes.JSON, allowNull: true },
-    refTokJti: { type: DataTypes.JSON, allowNull: true },
+    accTok: { type: DataTypes.JSON, allowNull: true },
+    refTok: { type: DataTypes.JSON, allowNull: true },
+
     status: { type: DataTypes.TINYINT, allowNull: false, defaultValue: STATUS.ACTIVE },
   },
   {

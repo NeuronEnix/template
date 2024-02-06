@@ -11,9 +11,9 @@ const CONFIG = {
   },
   IDP: {
     GOOGLE: {
-      CLIENT_ID: process.env.GOOGLE_OAUTH_CLIENT_ID || '',
-      CLIENT_SECRET: process.env.GOOGLE_OAUTH_CLIENT_SECRET || '',
-      CALLBACK_URL: process.env.GOOGLE_OAUTH_CALLBACK_URL || 'http://localhost:3000/auth/google/callback',
+      CLIENT_ID: process.env.GOOGLE_OAUTH_CLIENT_ID || 'client-id',
+      CLIENT_SECRET: process.env.GOOGLE_OAUTH_CLIENT_SECRET || 'client-secret',
+      REDIRECT_URI: process.env.GOOGLE_OAUTH_REDIRECT_URI || 'http://localhost:3000/auth/google',
     },
   },
 };
