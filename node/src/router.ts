@@ -17,11 +17,10 @@ export default async function router(req: T_Request): Promise<T_Response> {
     const reqPath = `${req.method} ${req.path}`;
 
     switch (reqPath) {
-
       case 'POST /auth/basic': res.body.data = await api.authAPI.basic(req); break;
       case 'GET /auth/google': res.body.data = await api.authAPI.google(req); break;
 
-      // case 'GET /user/detail': res.body.data = await api.userAPI.detail(req); break;
+        // case 'GET /user/detail': res.body.data = await api.userAPI.detail(req); break;
 
       default: res.httpCode = 400; res.body.code = 'INVALID_API'; res.body.msg = 'API Not available';
     }

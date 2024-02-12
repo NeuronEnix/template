@@ -29,9 +29,9 @@ export default async function execute(data: T_InData): Promise<T_OutData> {
       userId: userToken.userId,
       refreshToken: userToken.refreshToken,
     };
-  } catch ( e ) {
+  } catch (e) {
     if (e instanceof ResponseError) {
-      e.code = 'USER_NOT_FOUND'
+      e.code = 'USER_NOT_FOUND';
       throw resErr.auth.invalidCredential();
     }
     throw resErr.gen.unknown();
