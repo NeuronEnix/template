@@ -4,6 +4,7 @@ export const STATUS = {
 };
 
 export const AUTH = {
+  BCRYPT_SALT_ROUNDS: 10,
   MAX_SESSION: 5,
   ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET || 'secret-1',
   ACCESS_TOKEN_EXPIRE: '1h',

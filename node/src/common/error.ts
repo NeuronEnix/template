@@ -2,7 +2,7 @@ type T_Code =
 // General
 'UNKNOWN_ERROR' | 'INVALID_PARAM'
 // Auth
-| 'USER_NOT_FOUND' | 'USER_INACTIVE' | 'INVALID_CREDENTIAL' | 'GOOGLE_AUTH_ERROR';
+| 'USER_NOT_FOUND' | 'USER_INACTIVE' | 'INVALID_CREDENTIAL' | 'USER_ALREADY_EXIST' | 'GOOGLE_AUTH_ERROR';
 
 export class ResponseError extends Error {
   code: T_Code;
@@ -53,6 +53,10 @@ export const resErr = {
     invalidCredential: () => new ResponseError({
       code: 'INVALID_CREDENTIAL',
       msg: 'Invalid credential',
+    }),
+    userAlreadyExist: () => new ResponseError({
+      code: 'USER_ALREADY_EXIST',
+      msg: 'Account already exists',
     }),
     googleAuthError: (msg?: string, info?: object | null) => new ResponseError({
       code: 'GOOGLE_AUTH_ERROR',
