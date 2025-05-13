@@ -33,9 +33,9 @@ app.all('/{*any}', async (req: Request, res: Response, _next: NextFunction) => {
     return;
   }
   
+  const ctxMeta: TCtx['meta'] = getCtxMeta();
   const ctxReq: TCtx['req'] = getCtxRequest(req);
   const ctxUser: TCtx['user'] = getCtxUser(ctxReq);
-  const ctxMeta: TCtx['meta'] = getCtxMeta(ctxReq);
   const ctx: TCtx = {
     id: ctxMeta.monitor.traceId,
     meta: ctxMeta,
@@ -110,7 +110,7 @@ function getCtxUser(ctxReq: TCtx['req']): TCtx['user'] {
   };
 }
 
-function getCtxMeta(ctxReq: TCtx['req']): TCtx['meta'] {
+function getCtxMeta(): TCtx['meta'] {
   const curTime = new Date();
   const curSeq = ++INSTANCE.SEQ; // lifetime request sequence number
   const curInflight = ++INSTANCE.INFLIGHT; // number of request inflight when this request came in

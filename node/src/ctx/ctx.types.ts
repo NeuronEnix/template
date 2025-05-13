@@ -55,18 +55,6 @@ type CtxMeta = {
   }
 };
 
-type CtxTrace = {
-  traceId: string;
-  spanId: string;
-  stdout: string[];
-  dbLog: string[];
-  ts: {
-    in: Date; // request in time
-    out?: Date; // request out time
-    execTime?: Date; // total execution time
-  }
-}
-
 type CtxUser = {
   id: string;
   role: string;
