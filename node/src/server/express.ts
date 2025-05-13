@@ -27,6 +27,7 @@ function getHttpCode( ctx: TCtx ) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.all('/{*any}', async (req: Request, res: Response, _next: NextFunction) => {
   if (req.method !== 'GET' && req.method !== 'POST') {
     res.sendStatus(404);

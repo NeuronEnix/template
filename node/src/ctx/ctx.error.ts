@@ -1,4 +1,5 @@
 import { ErrorObject } from "ajv";
+
 type TCtxErrorData = { [key: string]: number | string | object | boolean | null }
 type TCtxError = {
   name: string;
